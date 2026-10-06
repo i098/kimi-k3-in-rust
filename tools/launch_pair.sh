@@ -27,7 +27,7 @@ PROFILE="${PROFILE:?set PROFILE to an aws profile, e.g. PROFILE=myorg}"
 SSM_PROFILE="${SSM_PROFILE-kimi-bench-ssm}"
 REGION="${REGION:-us-east-1}"
 TAG=kimi-k3-bench
-RUST_REPO="${RUST_REPO:-https://github.com/undeemed/kimi-k3-in-rust.git}"
+RUST_REPO="${RUST_REPO:-https://github.com/i098/kimi-k3-in-rust.git}"
 A=(aws --profile "$PROFILE" --region "$REGION")
 
 # im4gn is Graviton2, so the arm64 box is where the NEON kernels actually get tested.

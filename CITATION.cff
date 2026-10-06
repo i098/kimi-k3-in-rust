@@ -4,7 +4,7 @@ title: "kimi-k3-in-rust: CPU inference for Kimi K3 in pure Rust"
 type: software
 authors:
   - name: undeemed
-repository-code: "https://github.com/undeemed/kimi-k3-in-rust"
+repository-code: "https://github.com/i098/kimi-k3-in-rust"
 license: Apache-2.0
 abstract: >-
   CPU inference for Kimi K3, a 2.78 trillion parameter mixture-of-experts

@@ -102,7 +102,7 @@ cc --version | head -1; cargo --version
 say "cloning both engines"
 cd "$MNT"
 [ -d kimi-k3-in-c ]    || git clone -q https://github.com/FareedKhan-dev/kimi-k3-in-c.git
-[ -d kimi-k3-in-rust ] || git clone -q https://github.com/undeemed/kimi-k3-in-rust.git
+[ -d kimi-k3-in-rust ] || git clone -q https://github.com/i098/kimi-k3-in-rust.git
 # On a re-run the clone already exists, so PULL it: two reruns once executed a stale
 # guard because "skips what is done" silently included this checkout. The C clone is
 # not pulled - it is the frozen reference, pinned below.
