@@ -134,9 +134,7 @@ impl Tok {
     /// that round-trips and produces different ids. Port of `tk_build_bytemap`
     /// (tok.h:87).
     fn build_bytemap(&mut self) {
-        for v in &mut self.cp2byte {
-            *v = -1;
-        }
+        self.cp2byte.fill(-1);
         // bytes that map to themselves (printable ASCII + Latin-1 punctuation range)
         let mut isdir = [false; 256];
         for b in 33..=126u32 {
