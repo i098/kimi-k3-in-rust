@@ -20,9 +20,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # ubuntu-latest is x86-64, macos-latest is arm64, so between them this covers both
-        # dispatch paths: AVX2 and NEON.
-        os: [ubuntu-latest, macos-latest]
+        # ubuntu-latest is x86-64 (the AVX2 dispatch path). mac.yml runs this job on
+        # arm64 (the NEON path) on the self-hosted Mac runner.
+        os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable

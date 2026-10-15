@@ -1,0 +1,47 @@
+name: mac
+
+# The macOS jobs run on the self-hosted Mac runner (blueprint/maintenance/mac-runner.sh
+# in i098/Crewship), and only for a change that can affect macOS. ci.yml runs the
+# Linux checks on every change.
+on:
+  push:
+    branches: [main]
+    paths: &mac-paths
+      - .github/workflows/mac.yml
+      - "**/*.swift"
+      - "**/*.m"
+      - "**/*.mm"
+      - "**/*.metal"
+      - "**/*.plist"
+      - "**/*.entitlements"
+      - "**/*.xcodeproj/**"
+      - "**/*[mM]ac[oO][sS]*"
+      - "**/*[mM]ac[oO][sS]*/**"
+      # The NEON kernel dispatch and the macOS read paths.
+      - src/ops/dispatch.rs
+      - src/io_util.rs
+      - src/main.rs
+  pull_request:
+    paths: *mac-paths
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  # The weightless gate of ci.yml on arm64, which selects the NEON kernels.
+  test:
+    name: test macOS arm64
+    runs-on: [self-hosted, macOS, mac-kimi-k3-in-rust]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+
+      - name: which kernel path was selected
+        run: |
+          echo "arch: $(uname -m)"
+          rustc --version --verbose
+
+      - run: cargo test --release --all-targets
+      - run: cargo bench
