@@ -983,3 +983,5 @@ declarations.
 
 Kimi K3 is created and released by Moonshot AI under its own license. This repository
 contains **no model weights** and grants no rights to them.
+
+<!-- docs-only change: proves mac.yml skips -->
